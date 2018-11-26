@@ -3,6 +3,7 @@ package com.example.harunshaban.veninews.activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.harunshaban.veninews.R;
+
+import java.util.Locale;
 
 import io.paperdb.Paper;
 
@@ -68,9 +71,19 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case 0:
+                                        Locale locale = new Locale("en");
+                                        Locale.setDefault(locale);
+                                        Configuration configuration = new Configuration();
+                                        configuration.locale = locale;
+                                        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
                                         Toast.makeText(context1, "English selected", Toast.LENGTH_SHORT).show();
                                         break;
                                     case 1:
+                                        Locale locale2 = new Locale("en");
+                                        Locale.setDefault(locale2);
+                                        Configuration configuration2 = new Configuration();
+                                        configuration2.locale = locale2;
+                                        getBaseContext().getResources().updateConfiguration(configuration2, getBaseContext().getResources().getDisplayMetrics());
                                         Toast.makeText(context1, "Spanish selected", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
