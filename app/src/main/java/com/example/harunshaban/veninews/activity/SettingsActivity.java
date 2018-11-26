@@ -26,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button btn_changelanguage;
 
     //list view for language
-    String[] name_languages = {"English", "Franch"};
+    String[] name_languages = {"English", "Spanish"};
     Context context1 = SettingsActivity.this;
 
     @Override
@@ -71,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
                                         Toast.makeText(context1, "English selected", Toast.LENGTH_SHORT).show();
                                         break;
                                     case 1:
-                                        Toast.makeText(context1, "French selected", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context1, "Spanish selected", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
                             }
