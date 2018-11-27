@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VeniNews</string>
+    <string name="app_name" translatable="false">VeniNews</string>
     <string name="item1">Read Later</string>
     <string name="item2">Settings</string>
     <string name="item3">About</string>
     <string name="item4">Terms and Conditions</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="read_later">Read Later</string>
+    <string name="delete">Delete</string>
+    <string name="feedback">Feedback</string>
+    <string name="change_language">Change Language</string>
+
+    <string-array name="language_option">
+        <item>English</item>
+        <item>Spanish</item>
+    </string-array>
 </resources>
