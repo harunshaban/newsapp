@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -40,6 +41,19 @@ public class SettingsActivity extends AppCompatActivity {
         changeLanguage();
     }
 
+    public void setLocale(String lang) {
+
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, MainActivity.class);
+        startActivity(refresh);
+    }
+
+
     private void feedback(){
         btn_feedback = findViewById(R.id.feedback_button);
         btn_feedback.setOnClickListener(
@@ -71,19 +85,11 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case 0:
-                                        Locale locale = new Locale("en");
-                                        Locale.setDefault(locale);
-                                        Configuration configuration = new Configuration();
-                                        configuration.locale = locale;
-                                        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+                                        setLocale("en");
                                         Toast.makeText(context1, "English selected", Toast.LENGTH_SHORT).show();
                                         break;
                                     case 1:
-                                        Locale locale2 = new Locale("en");
-                                        Locale.setDefault(locale2);
-                                        Configuration configuration2 = new Configuration();
-                                        configuration2.locale = locale2;
-                                        getBaseContext().getResources().updateConfiguration(configuration2, getBaseContext().getResources().getDisplayMetrics());
+                                        setLocale("es");
                                         Toast.makeText(context1, "Spanish selected", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
