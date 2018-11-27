@@ -10,9 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.harunshaban.veninews.Helper.LocaleHelper;
 import com.example.harunshaban.veninews.R;
 
 import java.util.Locale;
@@ -31,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     //list view for language
     String[] name_languages = {"English", "Spanish"};
-    Context context1 = SettingsActivity.this;
+    Context context = SettingsActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context1);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setTitle("Select Language");
                         //add a list
                         builder.setItems(name_languages, new DialogInterface.OnClickListener() {
@@ -74,10 +76,14 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case 0:
-                                        Toast.makeText(context1, "English selected", Toast.LENGTH_SHORT).show();
+                                        LocaleHelper.setLocale(context, "en");
+                                        Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
+                                        recreate();
                                         break;
                                     case 1:
-                                        Toast.makeText(context1, "Spanish selected", Toast.LENGTH_SHORT).show();
+                                        LocaleHelper.setLocale(context, "ca-rES");
+                                        Toast.makeText(context, "Spanish selected", Toast.LENGTH_SHORT).show();
+                                        recreate();
                                         break;
                                 }
                             }

@@ -25,5 +25,5 @@
         android:text="@string/change_language"
         android:textSize="20dp"
         android:layout_below="@+id/feedback_button" />
-    
+
 </RelativeLayout>
