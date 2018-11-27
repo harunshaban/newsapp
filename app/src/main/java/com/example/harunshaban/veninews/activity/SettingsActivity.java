@@ -41,17 +41,6 @@ public class SettingsActivity extends AppCompatActivity {
         changeLanguage();
     }
 
-    public void setLocale(String lang) {
-
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-        Intent refresh = new Intent(this, MainActivity.class);
-        startActivity(refresh);
-    }
 
 
     private void feedback(){
@@ -85,11 +74,9 @@ public class SettingsActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 switch (which){
                                     case 0:
-                                        setLocale("en");
                                         Toast.makeText(context1, "English selected", Toast.LENGTH_SHORT).show();
                                         break;
                                     case 1:
-                                        setLocale("es");
                                         Toast.makeText(context1, "Spanish selected", Toast.LENGTH_SHORT).show();
                                         break;
                                 }
