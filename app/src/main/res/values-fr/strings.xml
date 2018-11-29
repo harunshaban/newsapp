@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VeniNews</string>
+    <string name="item1">Lire plus tard</string>
+    <string name="read_later">Lire plus tard</string>
+    <string name="item2">Réglages</string>
+    <string name="item3">Sur</string>
+    <string name="item4">Termes et conditions</string>
+    <string name="delete">Effacer</string>
+    <string name="feedback">Retour d\'information</string>
+    <string name="change_language">Changer de langue</string>
+
+</resources>
+

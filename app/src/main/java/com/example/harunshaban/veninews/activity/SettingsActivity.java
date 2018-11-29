@@ -1,8 +1,10 @@
 package com.example.harunshaban.veninews.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
@@ -31,13 +33,12 @@ public class SettingsActivity extends AppCompatActivity {
     //decleartion for change language
     private Button btn_changelanguage;
 
-    //list view for language
-    String[] name_languages = {"English", "Spanish"};
     Context context = SettingsActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.activity_settings);
         feedback();
         changeLanguage();
@@ -68,30 +69,55 @@ public class SettingsActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setTitle("Select Language");
-                        //add a list
-                        builder.setItems(name_languages, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case 0:
-                                        LocaleHelper.setLocale(context, "en");
-                                        Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
-                                        recreate();
-                                        break;
-                                    case 1:
-                                        LocaleHelper.setLocale(context, "ca-rES");
-                                        Toast.makeText(context, "Spanish selected", Toast.LENGTH_SHORT).show();
-                                        recreate();
-                                        break;
-                                }
-                            }
-                        }) ;
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                        showChangeLanguageDialog();
                     }
                 }
         );
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] listItem = {"English", "French"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Select Language");
+        builder.setSingleChoiceItems(listItem, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(which==0){
+                    //english
+                    Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
+                    setLocale("en");
+                    recreate();
+                }
+                if(which==1){
+                    //spanish
+                    Toast.makeText(context, "French selected", Toast.LENGTH_SHORT).show();
+                    setLocale("fr");
+                    recreate();
+                }
+                //dismiss alert dialog when is selected
+                dialog.dismiss();
+            }
+        });
+        AlertDialog mDialog = builder.create();
+        mDialog.show();
+
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+    //load languages from shared
+    public void loadLocale(){
+        SharedPreferences pref = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = pref.getString("My_Lang", "");
+        setLocale(language);
     }
 }
