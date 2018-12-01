@@ -1,6 +1,9 @@
 package com.example.harunshaban.veninews.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,7 +18,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
@@ -29,6 +31,7 @@ import com.example.harunshaban.veninews.R;
 import com.example.harunshaban.veninews.model.ResponeModel;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //loadLocale();
         setContentView(R.layout.activity_main);
-
         /*
         This is from internet it is equivalent with App class
         Made separate because we don`t want to execute the code every tme we open the application
@@ -63,12 +66,8 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.item1:
-                try{
                     Intent intent_ReadLater = new Intent(".activity.ReadLaterActivity");
                     startActivity(intent_ReadLater);
-                }catch (Exception e){
-                    Log.e("item1", e.toString());
-                }
                 break;
             case R.id.item2:
                 Intent intent_settings = new Intent(".activity.SettingsActivity");
@@ -156,6 +155,23 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
                 }
                 break;
         }
+    }
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+    //load languages from shared
+    public void loadLocale(){
+        SharedPreferences pref = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = pref.getString("My_Lang", "");
+        setLocale(language);
     }
 
 }
