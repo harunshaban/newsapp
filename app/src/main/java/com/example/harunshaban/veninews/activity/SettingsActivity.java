@@ -80,13 +80,13 @@ public class SettingsActivity extends AppCompatActivity {
                     //english
                     Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
                     setLocale("en");
-                    //recreate();
+                    recreate();
                 }
                 if(which==1){
                     //spanish
                     Toast.makeText(context, "French selected", Toast.LENGTH_SHORT).show();
                     setLocale("fr");
-                    //recreate();
+                    recreate();
                 }
                 //dismiss alert dialog when is selected
                 dialog.dismiss();
@@ -107,7 +107,6 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
         editor.putString("My_Lang", lang);
         editor.apply();
-        recreate();
     }
     //load languages from shared
     public void loadLocale(){

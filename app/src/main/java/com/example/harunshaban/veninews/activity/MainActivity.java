@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //loadLocale();
+        loadLocale();
         setContentView(R.layout.activity_main);
         /*
         This is from internet it is equivalent with App class

@@ -16,7 +16,6 @@ public class App extends Application {
         super.onCreate();
         SugarContext.init(this);
         loadLocale();
-
     }
 private void setLocale(String lang) {
     Locale locale = new Locale(lang);
