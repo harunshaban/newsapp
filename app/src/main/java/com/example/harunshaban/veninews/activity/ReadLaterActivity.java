@@ -1,7 +1,10 @@
 package com.example.harunshaban.veninews.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +23,7 @@ import com.example.harunshaban.veninews.model.Article;
 import com.example.harunshaban.veninews.utils.OnRecyclerViewItemClickListener;
 
 import java.util.List;
+import java.util.Locale;
 
 public class ReadLaterActivity extends AppCompatActivity implements OnRecyclerViewItemClickListener {
 

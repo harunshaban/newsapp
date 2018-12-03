@@ -17,17 +17,17 @@ public class App extends Application {
         SugarContext.init(this);
         loadLocale();
     }
-private void setLocale(String lang) {
-    Locale locale = new Locale(lang);
-    Locale.setDefault(locale);
-    Configuration configuration = new Configuration();
-    configuration.locale = locale;
-    getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
 
-    SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-    editor.putString("My_Lang", lang);
-    editor.apply();
-}
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
     //load languages from shared
     public void loadLocale(){
         SharedPreferences pref = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
