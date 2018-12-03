@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
         SugarDb db = new SugarDb(this);
         db.onCreate(db.getDB());
         */
-
+        loadLocale();
         SwipeMenu();
         checkNetwork();
         showData();
@@ -70,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
                 break;
             case R.id.item2:
                 Intent intent_settings = new Intent(".activity.SettingsActivity");
-                startActivity(intent_settings);
+                //startActivity(intent_settings);
+                //TODO start activity to take to take the data from there
+                startActivityForResult(intent_settings, 1);
                 break;
             case R.id.item3:
                 Intent intent_about = new Intent(Intent.ACTION_VIEW, Uri.parse(ABOUT_URL));
@@ -83,6 +86,36 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+    //TODO created override to get the result from activity settings
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                String res = data.getStringExtra("Language");
+                setLocale(res);
+                recreate();
+            }
+        }
+    }
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+
+    }
+    //load languages from shared
+    public void loadLocale(){
+        SharedPreferences pref = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = pref.getString("My_Lang", "");
+        setLocale(language);
     }
     @Override
     public void onBackPressed() {

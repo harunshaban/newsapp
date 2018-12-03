@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,12 +28,13 @@ public class SettingsActivity extends AppCompatActivity {
     //decleartion for change language
     private Button btn_changelanguage;
 
+    Intent i = new Intent();
     Context context = SettingsActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
+        //loadLocale();
         setContentView(R.layout.activity_settings);
         feedback();
         changeLanguage();
@@ -79,14 +81,20 @@ public class SettingsActivity extends AppCompatActivity {
                 if(which==0){
                     //english
                     Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
-                    setLocale("en");
-                    recreateApp();
+                    //setLocale("en");
+                    //recreateApp();
+                    i.putExtra("Language", "en");
+                    setResult(RESULT_OK, i);
+                    finish();
                 }
                 if(which==1){
-                    //spanish
+                    //french
                     Toast.makeText(context, "French selected", Toast.LENGTH_SHORT).show();
-                    setLocale("fr");
-                    recreateApp();
+                    //setLocale("fr");
+                    //recreateApp();
+                    i.putExtra("Language", "fr");
+                    setResult(RESULT_OK, i);
+                    finish();
                 }
                 //dismiss alert dialog when is selected
                 dialog.dismiss();
@@ -114,6 +122,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
         editor.putString("My_Lang", lang);
         editor.apply();
+
     }
     //load languages from shared
     public void loadLocale(){
@@ -121,4 +130,5 @@ public class SettingsActivity extends AppCompatActivity {
         String language = pref.getString("My_Lang", "");
         setLocale(language);
     }
+
 }
