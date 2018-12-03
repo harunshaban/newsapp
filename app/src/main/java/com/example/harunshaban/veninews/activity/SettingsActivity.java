@@ -80,13 +80,13 @@ public class SettingsActivity extends AppCompatActivity {
                     //english
                     Toast.makeText(context, "English selected", Toast.LENGTH_SHORT).show();
                     setLocale("en");
-                    recreate();
+                    recreateApp();
                 }
                 if(which==1){
                     //spanish
                     Toast.makeText(context, "French selected", Toast.LENGTH_SHORT).show();
                     setLocale("fr");
-                    recreate();
+                    recreateApp();
                 }
                 //dismiss alert dialog when is selected
                 dialog.dismiss();
@@ -95,6 +95,13 @@ public class SettingsActivity extends AppCompatActivity {
         AlertDialog mDialog = builder.create();
         mDialog.show();
 
+    }
+
+    private void recreateApp(){
+        Intent goMainActivity = new Intent(this, MainActivity.class);
+        goMainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(goMainActivity);
+        finish();
     }
 
     private void setLocale(String lang) {

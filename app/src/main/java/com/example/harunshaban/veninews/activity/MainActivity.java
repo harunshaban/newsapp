@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadLocale();
         setContentView(R.layout.activity_main);
         /*
         This is from internet it is equivalent with App class
@@ -156,22 +155,4 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
                 break;
         }
     }
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration configuration = new Configuration();
-        configuration.locale = locale;
-        getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
-
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", lang);
-        editor.apply();
-    }
-    //load languages from shared
-    public void loadLocale(){
-        SharedPreferences pref = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
-        String language = pref.getString("My_Lang", "");
-        setLocale(language);
-    }
-
 }
