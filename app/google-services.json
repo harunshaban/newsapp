@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "161579282080",
+    "firebase_url": "https://veninewsskype-fixed.firebaseio.com",
+    "project_id": "veninewsskype-fixed",
+    "storage_bucket": "veninewsskype-fixed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161579282080:android:8489293d7338eb11",
+        "android_client_info": {
+          "package_name": "com.example.harunshaban.veninews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161579282080-f21ponoar60rm69j6besa2ddn0p9rmae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.harunshaban.veninews",
+            "certificate_hash": "2ed3f81148c0f9d3a59def2cc01aa6ff40d6d7b0"
+          }
+        },
+        {
+          "client_id": "161579282080-o941h21rn0h0a45u3geih0ep4l8a990r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRx-TSSsGbqvgeguyNKCGOCPM7utXdh54"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161579282080-o941h21rn0h0a45u3geih0ep4l8a990r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
