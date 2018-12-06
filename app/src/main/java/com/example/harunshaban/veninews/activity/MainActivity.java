@@ -30,6 +30,7 @@ import com.example.harunshaban.veninews.adapter.MainArticalAdapter;
 import com.example.harunshaban.veninews.utils.OnRecyclerViewItemClickListener;
 import com.example.harunshaban.veninews.R;
 import com.example.harunshaban.veninews.model.ResponeModel;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 import java.util.Locale;
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
     private String TC_URL = "https://techcrunch.com/pages/contact-us/";
     private String ABOUT_URL = "https://techcrunch.com/pages/about-techcrunch";
     private DrawerLayout drawerLayout;
-
+    private String TAG = "mylog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
