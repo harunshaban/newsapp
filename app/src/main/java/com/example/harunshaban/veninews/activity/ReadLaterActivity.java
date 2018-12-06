@@ -1,7 +1,9 @@
 package com.example.harunshaban.veninews.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -28,7 +30,7 @@ import java.util.Locale;
 public class ReadLaterActivity extends AppCompatActivity implements OnRecyclerViewItemClickListener {
 
     private List savedArticles = Article.listAll(Article.class);
-
+    private Context context = ReadLaterActivity.this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,8 @@ public class ReadLaterActivity extends AppCompatActivity implements OnRecyclerVi
             final SavedArticalAdapter savedArticalAdapter = new SavedArticalAdapter(savedArticles);
             savedArticalAdapter.setOnRecyclerViewItemClickListener(ReadLaterActivity.this);
             read_later_recView.setAdapter(savedArticalAdapter);
-        }
+        }else
+            aDialogReadLater();
 
     }
 
@@ -63,4 +66,23 @@ public class ReadLaterActivity extends AppCompatActivity implements OnRecyclerVi
                 break;
         }
     }
+
+    public void aDialogReadLater(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.aDialogTitle)
+                .setMessage(R.string.aDialogMessage)
+                .setCancelable(false)
+                .setPositiveButton(R.string.aDialogButton, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //when cliked ok goes to main activity
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        context.startActivity(intent);
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

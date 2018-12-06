@@ -19,5 +19,6 @@
     <color name="maroon">#800000</color>
     <color name="olive">#808000</color>
     <color name="platinum">#E5E4E2</color>
+    <color name="black">#000</color>
 
 </resources>

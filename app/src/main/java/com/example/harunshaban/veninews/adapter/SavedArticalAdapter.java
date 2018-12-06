@@ -1,6 +1,8 @@
 package com.example.harunshaban.veninews.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.harunshaban.veninews.R;
+import com.example.harunshaban.veninews.activity.MainActivity;
 import com.example.harunshaban.veninews.activity.ReadLaterActivity;
 import com.example.harunshaban.veninews.model.Article;
 import com.example.harunshaban.veninews.utils.OnRecyclerViewItemClickListener;
@@ -103,6 +106,7 @@ public class SavedArticalAdapter extends RecyclerView.Adapter<SavedArticalAdapte
         savedArticles.remove(currPosition);
         notifyItemRemoved(currPosition);
         notifyDataSetChanged();
+        //TODO here needs to show dialog when deleting last artical
+        //if (savedArticles.size() <= 0)
     }
-
 }

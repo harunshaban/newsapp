@@ -9,6 +9,10 @@
     <string name="delete">Effacer</string>
     <string name="feedback">Retour d\'information</string>
     <string name="change_language">Changer de langue</string>
+    <string name="no_artical_read_later">Aucun Article</string>
+    <string name="aDialogTitle">" Rappel"</string>
+    <string name="aDialogMessage">Il n\'y a pas d\'article dans cette section</string>
+    <string name="aDialogButton">OK</string>
 
 </resources>
 

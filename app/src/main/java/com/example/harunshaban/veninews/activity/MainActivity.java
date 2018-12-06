@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
                 break;
             case R.id.item2:
                 Intent intent_settings = new Intent(".activity.SettingsActivity");
-                //startActivity(intent_settings);
-                //TODO start activity to take to take the data from there
                 startActivityForResult(intent_settings, 1);
                 break;
             case R.id.item3:
@@ -189,4 +187,5 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerViewIte
                 break;
         }
     }
+
 }
