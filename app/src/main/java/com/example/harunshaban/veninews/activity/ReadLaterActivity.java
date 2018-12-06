@@ -83,6 +83,7 @@ public class ReadLaterActivity extends AppCompatActivity implements OnRecyclerVi
                 });
         AlertDialog dialog = builder.create();
         dialog.show();
+
     }
 
 }

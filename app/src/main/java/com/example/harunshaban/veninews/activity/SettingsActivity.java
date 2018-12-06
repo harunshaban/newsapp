@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     //decleration for feedback
     private Button btn_feedback;
-    private String recipient_email = "miso@venikom.com";
+    private String recipient_email = "harunshaban@outlook.com";
     private String subject = "Feedback news app";
 
     //decleartion for change language

@@ -34,7 +34,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ReadLaterActivity">
+        <activity android:name=".activity.ReadLaterActivity"
+            >
             <intent-filter>
                 <action android:name=".activity.ReadLaterActivity" />
 
